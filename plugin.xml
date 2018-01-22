@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="it.zenitlab.cordova.plugins.universalprinter"
+    version="1.0">
+    <name>UniversalBluetoothPrinter</name>
+    <description>A Cordova/Phonegap driver for universal bluetooth printers</description>
+    <license>Apache</license>
+    <keywords>Ionic,bluetoothPrinter</keywords>
+    <repo>https://github.com/danielcalvete19/universalprinter.git</repo>
+    <issue>https://github.com/danielcalvete19/universalprinter/issues</issue>
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+
+    <!-- android -->
+    <platform name="android">
+        <js-module src="www/universalprinter.js" name="UniversalBluetoothPrinter">
+            <clobbers target="cordova.plugins.universalprinter" />
+        </js-module>
+
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.BLUETOOTH" />
+        </config-file>
+      
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="UniversalBluetoothPrinter">
+                <param name="android-package" value="it.zenitlab.cordova.plugins.universalprinter.UniversalBluetoothPrinter" />
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/it/zenitlab/cordova/plugins/universalprinter/UniversalBluetoothPrinter.java" target-dir="src/android/it/zenitlab/cordova/plugins/universalprinter" />
+
+        <source-file src="src/android/RT_Android_Bluetooth_SDK.jar" target-dir="libs"/>
+
+    </platform>
+</plugin>
